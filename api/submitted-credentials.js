@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'Missing fields' });
     }
 
-    // Configure transporter using environment variables (set in Vercel)
+    // Configure email transport using environment variables
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {

